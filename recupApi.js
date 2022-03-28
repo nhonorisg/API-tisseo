@@ -6,7 +6,7 @@
  * les données récuperer dans cette application sont:
     * Tous les noms des stations desservis par Tisséo
     * les stations se trouvant sur une même ligne
-    * Ainsi que les hraires de passages des navettes de la ligne. 
+    * Ainsi que les horaires de passages des navettes de la ligne. 
 */
 
 
