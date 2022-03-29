@@ -11,6 +11,7 @@
 
 
 const boutRecup = document.querySelector("button");
+const section1 = document.querySelector("section");
 
 // Ajout d'un événement au click du bouton 
 boutRecup.addEventListener('click', () => {
@@ -27,16 +28,17 @@ boutRecup.addEventListener('click', () => {
             const donneesRendu = JSON.parse(tisseoData.responseText);
             // récupération des données dans l'array lines.line  
             const outPutDonnees = donneesRendu.lines.line;
+            section1.innerHTML = " ";
 
             // parcours de l'array pour récupérer les noms des stations
             for (const Stations of outPutDonnees) {
-                const section1 = document.querySelector("section");
                 // Ajout des noms de stations sous forme d'une liste dans la section html  
                 section1.innerHTML += "<ul><li>" + Stations.name + "</ul></li>";
             }
 
             const li1Stations = document.querySelectorAll("li");
             const section2 = document.querySelector("#sec2");
+            
 
             // parcours de tous les éléménts li de la section1
             for (const valeurs of li1Stations) {
@@ -53,6 +55,7 @@ boutRecup.addEventListener('click', () => {
                             // récupération des données dans l'array physicalStops.physicalStop
                             .then(Donnees => {
                                 const stations2 = Donnees.physicalStops.physicalStop;
+                                section2.innerHTML = "";
 
                                 // parcours de données de la nouvelle api
                                 for (const arret of stations2) {
@@ -60,7 +63,8 @@ boutRecup.addEventListener('click', () => {
                                     section2.innerHTML += "<ul><li id='li2'>" + arret.name +"</ul></li>";
                                 }
 
-                                const li2Stations = document.querySelectorAll('#li2'); 
+                                const li2Stations = document.querySelectorAll('#li2');
+                                const section3 = document.querySelector("#sec3");
 
                                 // parcours des éléments de la liste de la section 2
                                 for (const lastStations of li2Stations) {
@@ -77,11 +81,10 @@ boutRecup.addEventListener('click', () => {
                                                     // on récupère les données dans l'array departures.departure
                                                     .then(receivedData => {
                                                         const stops = receivedData.departures.departure;
-
+                                                        section3.innerHTML = " ";
                                                         // parcours de l'array departures.departure pour ajouter le contenu de
                                                         // dateTime dans notre page html
                                                         for (const timeInfo of stops) {
-                                                            const section3 = document.querySelector("#sec3");
                                                             section3.innerHTML += "<ul><li>" + timeInfo.dateTime + "</ul></li>";
                                                         }
                                                     })
